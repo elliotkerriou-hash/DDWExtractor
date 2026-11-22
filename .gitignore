@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+# Extracted game files: never commit them
+extracted/
+extraido/
+*.dec
+*.dds
+*.upak
+*.obj
+*.mtl
+*.png
+!docs/**/*.png
+build/
+dist/
+*.spec
+*.glb
+*.gltf
+*.oppc
+*.ospc
+.vscode/
+.claude/
