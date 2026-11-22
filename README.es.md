@@ -29,14 +29,35 @@ impresión 3D y fan art.
 Todas las piezas de Death comparten el mismo sistema de coordenadas: cabeza, cuerpo base y
 un set de armadura encajan solos.
 
-## Instalación
+## Descarga (Windows, lo más fácil)
+
+1. Entra a [Releases](https://github.com/elliotkerriou-hash/DDWExtractor/releases/latest) y
+   descarga **`DDWExtractor.exe`**.
+2. Haz doble clic. No hay que instalar nada, ni siquiera Python.
+
+El exe no está firmado digitalmente, así que Windows SmartScreen puede decir *"Windows
+protegió tu PC"*: pulsa **Más información → Ejecutar de todas formas**. La primera vez tarda
+unos segundos en abrir.
+
+## Instalación desde el código (cualquier sistema con Python)
 
 1. Instala [Python 3.10 o superior](https://www.python.org/downloads/) (marca "Add Python to PATH").
 2. En la carpeta del proyecto ejecuta: `pip install -r requirements.txt`
 
+Para generar el exe tú mismo:
+
+```
+python -m venv build/venv
+build\venv\Scripts\python -m pip install -r requirements.txt pyinstaller
+build\venv\Scripts\python build_exe.py
+```
+
+El resultado queda en `dist/DDWExtractor.exe`.
+
 ## Uso con ventana (recomendado)
 
-Doble clic en `DDWExtractor.pyw` (o `python -m ddwextractor`). La interfaz está en inglés:
+Doble clic en `DDWExtractor.exe` (desde el código: `DDWExtractor.pyw` o `python -m ddwextractor`).
+Los archivos extraídos se guardan por defecto en `Documentos\DDWExtractor`. La interfaz está en inglés:
 
 1. El juego se detecta solo; si no, pulsa **Browse…**.
 2. Haz clic en un recurso (por ejemplo **Armor**) para abrir la **vista previa** con la

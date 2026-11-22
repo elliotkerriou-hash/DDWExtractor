@@ -31,7 +31,16 @@ Useful assets for cosplay:
 All of Death's pieces share the same coordinate system: import the head, the base body and an
 armor set and they fit together.
 
-## Install
+## Download (Windows, easiest)
+
+1. Go to [Releases](https://github.com/elliotkerriou-hash/DDWExtractor/releases/latest) and
+   download **`DDWExtractor.exe`**.
+2. Double-click it. Nothing to install: no Python needed.
+
+The exe is not code-signed, so Windows SmartScreen may say *"Windows protected your PC"*:
+click **More info → Run anyway**. It takes a few seconds to open the first time.
+
+## Install from source (any OS with Python)
 
 1. Install [Python 3.10 or newer](https://www.python.org/downloads/) (tick "Add Python to PATH").
 2. Download this project and, in its folder, run:
@@ -40,9 +49,20 @@ armor set and they fit together.
 pip install -r requirements.txt
 ```
 
+To build the exe yourself:
+
+```
+python -m venv build/venv
+build\venv\Scripts\python -m pip install -r requirements.txt pyinstaller
+build\venv\Scripts\python build_exe.py
+```
+
+The result is `dist/DDWExtractor.exe`.
+
 ## Using the window (recommended)
 
-Double-click `DDWExtractor.pyw` (or run `python -m ddwextractor`).
+Double-click `DDWExtractor.exe` (from source: `DDWExtractor.pyw` or `python -m ddwextractor`).
+Extracted files go to `Documents\DDWExtractor` by default.
 
 1. The game is detected automatically. If not, click **Browse…** and pick its folder.
 2. Click an asset (for example **Armor**) to open the **preview** with the list of its models

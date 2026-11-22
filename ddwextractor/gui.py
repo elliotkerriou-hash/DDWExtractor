@@ -30,6 +30,7 @@ class App(tk.Tk):
         self.title("DDWExtractor - Darksiders II")
         self.geometry("1280x820")
         self.minsize(960, 640)
+        self._set_icon()
         self.game: Game | None = None
         self.rows: list[tuple[str, int, int, float]] = []
         self.events: queue.Queue = queue.Queue()
@@ -184,6 +185,14 @@ class App(tk.Tk):
         self.log.pack(fill="x", padx=6, pady=(0, 6))
 
     # ------------------------------------------------------------- helpers
+    def _set_icon(self):
+        path = _icon_path()
+        if path:
+            try:
+                self.iconbitmap(default=str(path))
+            except tk.TclError:
+                pass
+
     def _write(self, msg: str):
         self.log.configure(state="normal")
         self.log.insert("end", msg + "\n")
@@ -545,6 +554,14 @@ class App(tk.Tk):
         except queue.Empty:
             pass
         self.after(50, self._poll)
+
+
+def _icon_path() -> Path | None:
+    import sys
+
+    base = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent.parent / "packaging"))
+    path = base / "icon.ico"
+    return path if path.exists() else None
 
 
 def main():
